@@ -37,17 +37,7 @@ const config: NextConfig = {
           },
         ];
   },
-  async redirects() {
-    return preview
-      ? []
-      : [
-          {
-            source: "/:path*",
-            has: [{ type: "host", value: "www.helloluqa.com" }],
-            destination: "https://helloluqa.com/:path*",
-            permanent: true,
-          },
-        ];
-  },
+  // The hosting platform owns www/apex redirects. Duplicating a domain rule
+  // here can send requests back to the host selected by the platform.
 };
 export default config;
